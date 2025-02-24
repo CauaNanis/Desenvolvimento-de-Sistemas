@@ -1,0 +1,25 @@
+<script>
+
+    let notas = [];
+    let contador = 0;
+    let limite = 5;
+    let media;
+
+    while (contador != limite) {
+        notas.push(Number(prompt('Digitr cinco notas')));
+        contador ++;
+    }
+
+    notas.forEach(function(media){
+        media = (notas [0] + notas [1] + notas [2] + notas [3] + notas [4]) / 5;
+        console.log('Sua média é de ' + media);
+    });
+
+    media = (notas [0] + notas [1] + notas [2] + notas [3] + notas [4]) / 5;
+        if (media >= 7) {
+            console.log('Aprovado')
+        } else {
+            console.log('Reprovado')
+        }
+
+</script>
