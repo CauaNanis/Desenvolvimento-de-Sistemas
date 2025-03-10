@@ -1,0 +1,17 @@
+<script>
+    let numeros = [10, 9, 8, 11, 1, 22, 17, 7, 84, 0, 8764, 345, 6312];
+    let consult = Number(prompt('Digite o número que você deseja achar'));
+    let encontrou = false;
+
+    for (let index = 0; index < numeros.length; index++) {
+        if (consult == numeros[index]) {
+            encontrou = true;
+        }
+    }
+    if (encontrou) {
+        alert('Número encontrado');
+    } else {
+        alert('Número não encontrado');
+    }
+
+</script>

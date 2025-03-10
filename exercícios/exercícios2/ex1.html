@@ -1,0 +1,13 @@
+<script>
+    let veiculos = [];
+    let continuar = 'sim';
+
+    while (continuar == 'sim') {
+        veiculos.push(prompt('Digite o nome do veículo que você deseja cadastrar:'));
+        continuar = prompt('Deseja cadastrar mais veículos? sim/não');
+        continuar = continuar.toLowerCase();
+    }
+
+    console.log(veiculos);
+    
+</script>
