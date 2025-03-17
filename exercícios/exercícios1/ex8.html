@@ -2,9 +2,15 @@
     let produtos = [];
     let continuar = 'sim';
 
-while (continuar == 'sim') {
-    produtos.push(prompt('Digite o nome do produto: '))
-    continuar = prompt('Deseja continuar? sim/não')
-}
+    while (continuar == 'sim') {
+        produtos.push(prompt('Digite o nome do produto: '))
+        continuar = prompt('Deseja adicionar mais um produto na lista? sim/não')
+    }
+
+    produtos.forEach(
+        function(item){
+            console.log(item);
+        }
+    );
 
 </script>

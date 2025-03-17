@@ -1,0 +1,19 @@
+<script>
+
+    let nome = [];
+    let gols = [];
+    let continuar = 'sim';
+
+    while (continuar == 'sim') {
+        nome.push(prompt('Digite o nome do jogador: '))
+        gols.push(Number(prompt('Digite quantos gols esse jogador fez: ')))
+        continuar = prompt('Deseja digitar o nome de mais um jogador? sim/não')
+    }
+
+    nome.forEach(
+        function(item, item2) {
+            console.log(`${item} (${gols[item2]} gols)`);
+        }
+    );
+
+</script>
