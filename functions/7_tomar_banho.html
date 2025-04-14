@@ -1,0 +1,45 @@
+<script>
+
+    let chuveiro = 'desligado'
+
+    verificarOndeEstou('cadeira');
+    ligarChuveiro();
+    verificarSeChuveiroLigou();
+
+    function verificarOndeEstou(local){
+        if (local == 'cadeira')
+            levantar();
+
+        if (local == 'em pé')
+            caminharAteChuveiro();
+            
+        if (local == 'deitado')
+            levantar();
+    }
+
+    function levantar(){
+        console.log('Você levantou!');
+        caminharAteChuveiro();
+    }
+
+    function caminharAteChuveiro(){
+        console.log('Caminhando até o banheiro!');
+        console.log('Entrando no box!');
+    }
+
+    function ligarChuveiro(){
+        console.log('Ligando Registro!');
+        chuveiro = 'chuveiro ligado!';
+    }
+
+    function verificarSeChuveiroLigou(){
+        if (chuveiro == 'ligou') {
+            console.log('O chuveiro ligou!');
+            console.log('Tomando banho!')
+        } else {
+            console.log('O chuveiro está queimado!');
+            console.log('Continuou sujo!')
+        }
+    }
+
+</script>
