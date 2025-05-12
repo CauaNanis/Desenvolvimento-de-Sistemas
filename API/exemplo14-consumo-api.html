@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,6 +48,39 @@
               let population = document.createElement('p');
               population.innerText = country.population;
 
+              let maps = document.createElement('a');
+              maps.setAttribute('href', country.maps.googleMaps);
+              maps.innerText = 'Mapa';
+
+              let continents = document.createElement('h6');
+              continents.innerText = country.continents;
+
+              let region = document.createElement('p');
+              region.innerText = country.region;
+
+              let subregion = document.createElement('p');
+              subregion.innerText = country.subregion;
+
+              let borders = document.createElement('p');
+              borders.innerText = country.borders;
+              borders.style.wordWrap = "break-word";
+
+              let independent = document.createElement('p');
+              if (country.independent == true) {
+                independent.innerText = 'País Independente';
+              } else {
+                independent.innerText = 'País Pau Mandando';
+              }
+
+              let bandeiramilitar = document.createElement('img');
+              bandeiramilitar.setAttribute('src', country.coatOfArms.svg);
+              bandeiramilitar.style.width = '100%';
+              bandeiramilitar.style.borderRadius = '8px';
+
+              let fusohorario = document.createElement('p');
+              fusohorario.innerText = country.timezones;
+              // timezones - faça um foreach para fuso horário
+
               let col = document.createElement('div');
               col.classList.add("col-3");
 
@@ -56,8 +89,15 @@
               col.appendChild(subtitle);
               col.appendChild(capital);
               col.appendChild(population);
+              col.appendChild(maps);
+              col.appendChild(continents);
+              col.appendChild(region);
+              col.appendChild(subregion);
+              col.appendChild(borders);
+              col.appendChild(independent);
+              col.appendChild(fusohorario);
+              col.appendChild(bandeiramilitar);
               countries_list.appendChild(col);
-
           });
         })
         .catch(erro => {
