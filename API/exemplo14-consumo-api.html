@@ -81,6 +81,14 @@
               fusohorario.innerText = country.timezones;
               // timezones - faça um foreach para fuso horário
 
+              let linguagem = document.createElement('p');
+              linguagem.innerText = Object.keys(country.languages);
+
+              let moeda = document.createElement('p');
+              moeda.innerText = Object.keys(country.currencies);
+
+              let status = document.create
+
               let col = document.createElement('div');
               col.classList.add("col-3");
 
@@ -96,6 +104,8 @@
               col.appendChild(borders);
               col.appendChild(independent);
               col.appendChild(fusohorario);
+              col.appendChild(linguagem);
+              col.appendChild(moeda);
               col.appendChild(bandeiramilitar);
               countries_list.appendChild(col);
           });
