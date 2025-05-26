@@ -52,6 +52,15 @@
               maps.setAttribute('href', country.maps.googleMaps);
               maps.innerText = 'Mapa';
 
+              let iframe = document.createElement('iframe');
+              // iframe.setAttribute('src', `https://www.google.com/maps?q=${country.lating[0]}, ${country.lating[1]}&hl=pt-BR&z=6&output=embed`);
+              iframe.setAttribute.width = "600"; 
+              iframe.setAttribute.height = "450"; 
+              iframe.setAttribute.style = "border:0;";
+              iframe.setAttribute.allowfullscreen = ""; 
+              iframe.setAttribute.loading = "lazy";
+              iframe.setAttribute.referrerpolicy="no-referrer-when-downgrade";  
+
               let continents = document.createElement('h6');
               continents.innerText = country.continents;
 
