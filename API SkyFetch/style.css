@@ -11,4 +11,14 @@ main{
 }
 .card{
     margin: 10px;
+    margin-bottom: 360px;
+}
+.fixarRodape{
+    bottom: 0;
+    position: fixed;
+    width: 150%;
+    text-align: center;
+}
+.bgcustom{
+
 }
