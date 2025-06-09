@@ -1,24 +1,19 @@
-h1{
-    text-align: center;
+.bg-custom {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #0D0D0D;
 }
-h2  {
-    text-align: center;
-}
-main{
-    margin-top: 100px;
-    display: flex;
-    justify-content: center;
-}
-.card{
-    margin: 10px;
-    margin-bottom: 360px;
-}
-.fixarRodape{
-    bottom: 0;
-    position: fixed;
-    width: 150%;
-    text-align: center;
-}
-.bgcustom{
 
+a.nav-link {
+    color: white;
+}
+
+.navbar a:hover {
+    color: #ffffffa8;
+    transition: 3s;
+}
+
+a.dropdown-item:hover {
+    color: black;
+    transition: 0s;
 }
