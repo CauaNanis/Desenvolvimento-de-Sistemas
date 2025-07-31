@@ -1,0 +1,75 @@
+<script>
+
+    class Pessoa {
+        constructor(nome, idade, cpf){
+            this.nome = nome;
+            this.idade = idade;
+            this.cpf = cpf;
+        }
+
+        falar(){
+            console.log('Olá!');
+        }
+
+        andar(){
+            console.log('A pessoa andou!');
+        }
+    }
+
+    let professor = new Pessoa('Memphis', '31', '010');
+    console.log(professor.nome);
+    console.log(professor.idade);
+    console.log(professor.cpf);
+    console.log(professor.falar());
+    console.log(professor.andar());
+
+    let aluno = new Pessoa('Yuri', '24', '009')
+    console.log(aluno);
+
+    //~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//
+
+    class Usuario {
+        /*
+        No constructor está ocorrendo o encapsulamento ou seja os dados estão sendo agrupados dentro da classe que é a nossa (capsula).
+        */
+        constructor(nome, tipo, email, senha, status){
+            this.nome = nome;
+            this.tipo = tipo;
+            this.email = email;
+            this.senha = senha;
+            this.status = status;
+        }
+
+        /*
+        Aqui está ocorrendo o POLIMORFISMO, ou seja, a classe pode sonter comportamentos diferentes como conectar, descontectar, etc...
+        */
+
+        conectar(){
+            console.log('Usúario conectado!');
+        }
+
+        desconectar(){
+            console.log('Usúario desconectado!');
+        }
+
+        recuperarSenha(){
+            console.log('E-mail de recuperação enviado!');
+        }
+
+        alterarSenha(){
+            console.log('Senha atualizada!');
+        }
+
+        desativarConta(){
+            console.log('Conta desativada!');
+        }
+
+        alterarTipo(){
+            console.log('O tipo de conta foi atualizado!');
+        }
+
+    }
+
+    let admin_1 = new Usuario('Garro', 'admin', 'garro@gmail.com', 'garro008', 'online');
+
+</script>
