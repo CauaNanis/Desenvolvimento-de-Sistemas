@@ -1,0 +1,49 @@
+<script>
+
+    class Concessionaria{
+        constructor(modelo, placa, ano, cor){
+            this.modelo = modelo;
+            this.placa = placa;
+            this.ano = ano;
+            this.cor = cor;
+        }
+
+        set modeloCarro(modelo) {
+            this.modelo = modelo;
+        }
+
+        get modeloCarro(){
+            return this.modelo;
+        }
+
+        set placaCarro(placa) {
+            this.placa = placa;
+        }
+
+        get placaCarro() {
+            return this.placa;
+        }
+
+        set anoCarro(ano) {
+            this.ano = ano;
+        }
+
+        get anoCarro(){
+            return this.ano;
+        }
+
+        set corCarro(cor) {
+            this.cor = cor;
+        }
+
+        get corCarro() {
+            return this.cor;
+        }
+
+        calcularIdade(){
+            return this.salario_base * this.horas_trabalhadas;
+        }
+
+    }
+
+</script>
