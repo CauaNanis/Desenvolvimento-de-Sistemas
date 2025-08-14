@@ -1,0 +1,70 @@
+<!-- Exercício 2
+
+Crie uma classe `ContaBancaria` com as seguintes características:
+
+- Propriedades: titular, saldo e numeroConta
+- Construtor que inicializa esses valores (com saldo inicial opcional)
+- Métodos getters para todas as propriedades
+- Métodos `depositar(valor)` e `sacar(valor)` que alteram o saldo
+- Método `exibirSaldo()` que mostra o saldo atual -->
+
+<script>
+    class ContaBancaria {
+        constructor(titular, saldo, numeroConta) {
+            this.titular = titular;
+            this.saldo = saldo;
+            this.numeroConta = numeroConta;
+        }
+
+            set contaTitular(titular){
+                this.titular = titular;
+            }
+
+            get contaTitular(){
+                return this.titular;
+            }
+
+            set contaSaldo(saldo){
+                this.saldo = saldo;
+            }
+
+            get contaSaldo(){
+                return this.saldo;
+            }
+
+            set contaNumero(numeroConta){
+                this.numeroConta = numeroConta;
+            }
+
+            get contaNumero(){
+                return this.numeroConta;
+            }
+
+            depositar(valor){
+                this.saldo = this.saldo + valor;
+                console.log(`Você depositou ${valor} reais!`);
+            }
+
+            sacar(valor){
+                if(this.saldo - valor < 0){
+                    console.log('Você não tem essa quantia de dinheiro para sacar!')
+                }else{
+                    this.saldo = this.saldo - valor;
+                    console.log(`Você sacou ${valor} reais!`);
+                }
+            }
+
+            exibirSaldo(){
+                console.log(`Seu saldo é de ${this.saldo} reais!`)
+            }
+    }
+
+    let conta = new ContaBancaria('Yuri', 10000, 1910);
+    
+    conta.exibirSaldo();
+    conta.depositar(10000);
+    conta.exibirSaldo();
+    conta.sacar(20000);
+    conta.exibirSaldo();
+
+</script>

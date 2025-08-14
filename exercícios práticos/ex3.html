@@ -1,0 +1,69 @@
+<!-- Exercicio 3
+
+Crie uma classe `ContaPoupanca` que herda da classe `ContaBancaria` do exercício anterior, com as seguintes características adicionais:
+
+- Uma propriedade privada `taxaDeJuros`
+- Construtor que inicializa todos os valores (incluindo os herdados)
+- Um método `aplicarJuros() -->
+
+<script>
+    class ContaBancaria {
+        constructor(titular, saldo, conta) {
+            this.titular = titular;
+            this.saldo = saldo;
+            this.conta = conta;
+        }
+
+            set contaTitular(titular){
+                this.titular = titular;
+            }
+
+            get contaTitular(){
+                return this.titular;
+            }
+
+            set contaSaldo(saldo){
+                this.saldo = saldo;
+            }
+
+            get contaSaldo(){
+                return this.saldo;
+            }
+
+            set contaNumero(conta){
+                this.conta = conta;
+            }
+
+            get contaNumero(){
+                return this.conta;
+            }
+
+            depositar(valor){
+                this.saldo = this.saldo + valor;
+                console.log(`Você depositou ${valor} reais!`);
+            }
+
+            sacar(valor){
+                if(this.saldo - valor < 0){
+                    console.log('Você não tem essa quantia de dinheiro para sacar!')
+                }else{
+                    this.saldo = this.saldo - valor;
+                    console.log(`Você sacou ${valor} reais!`);
+                }
+            }
+
+            saldo(){
+                console.log(`Seu saldo é de ${this.saldo} reais!`)
+            }
+    }
+
+    class ContaPoupanca extends ContaBancaria {
+        constructor(titular, saldo, conta, taxaJuros){
+            super(titular, saldo, conta);
+            this.taxaJuros = taxaJuros;
+        }
+
+        aplicarJuros()
+
+    }
+</script>
