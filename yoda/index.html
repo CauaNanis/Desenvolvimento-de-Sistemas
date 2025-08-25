@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yoda Quiz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+</head>
+
+<body class="d-flex justify-content-center">
+
+  <div class="box border border-dark rounded p-3 mt-4 mb-5" style="width: 800px; height: 550px;">
+
+    <div class="box3 border border-dark rounded-4 shadow mx-2 my-2 p-3" style="height: 200px;">
+      <div class="container-fluid h-100 d-flex flex-column justify-content-center">
+        <div class="row justify-content-center">
+          <div class="col-10">
+            <div class="mb-3">
+              <label for="pergunta" class="form-label fw-bold">Sua pergunta digite</label>
+              <input type="text" name="pergunta" id="pergunta" class="form-control mb-2"
+                placeholder="Vai Corinthians...">
+              <button class="btn btn-primary w-100" onclick="perguntar()">Perguntar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box2 border border-dark rounded-4 shadow mx-2 mb-2 p-3" style="height: 300px; overflow-y: auto;">
+      <div class="container-fluid" id="chat">
+        <!-- <div class="row d-flex justify-content-start">
+          <div class="col-8">
+            <div class="card shadow p-3 m-2 bg-secondary text-light fw-bold">Meu texto</div>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-end">
+          <div class="col-8">
+            <div class="card shadow p-3 m-2 bg-info text-dark fw-bold">Resposta do Yoda</div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    let chat = document.getElementById('chat');
+
+    function perguntar() {
+        let pergunta = document.getElementById('pergunta').value;
+
+ 
+        const URL = `https://api.openai.com/v1/chat/completions`;
+
+        fetch(URL, {
+            method: 'POST', //post, get, delete, put
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${KEY}`
+            },
+            body: JSON.stringify({
+                model: 'gpt-4o-mini',
+                messages: [
+                    { role: 'system', content: 'Me responda como se você fosse o mestre Yoda, de forma curta e clara' },
+                    { role: 'user', content: pergunta },
+                ],
+                max_tokens: 50
+            })
+        })
+            .then(resp => resp.json())
+            .then(resp => {
+                console.log(resp);
+
+                let col_perg = document.createElement('div');
+                col_perg.classList.add('col-8', 'd-flex', 'justify-content-end', 'row',);
+
+                let col_resp = document.createElement('div');
+                col_resp.classList.add('col-8', 'd-flex', 'justify-content-start', 'row'); 
+
+                let card_perg = document.createElement('div');
+                card_perg.classList.add('card', 'p-2', 'm-1', 'bg-primary', 'card-shadow', 'p-3', 'm-2', 'bg-secondary', 'text-light', 'text-end', 'fw-bold');
+                card_perg.innerText = pergunta;
+
+                let card_resp = document.createElement('div');
+                card_resp.classList.add('card', 'p-2', 'm-1', 'bg-warning');
+                card_resp.innerText = resp.choices[0].message.content;
+
+                col_perg.appendChild(card_perg);
+                col_resp.appendChild(card_resp);
+
+                chat.appendChild(card_perg);
+                chat.appendChild(card_resp);
+
+                chat.scrollTop = chat.scrollHeight;
+
+            })
+            .catch(erro => {
+                console.log(erro);
+            })
+            .finally(() => {
+                console.log('Finalizado');
+            })
+
+    }
+
+
+</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
