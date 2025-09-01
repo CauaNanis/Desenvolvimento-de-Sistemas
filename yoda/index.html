@@ -5,13 +5,34 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Yoda Quiz</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <script src="./model.js"></script>
 </head>
 
-<body class="d-flex justify-content-center">
+<body>
 
-  <div class="box border border-dark rounded p-3 mt-4 mb-5" style="width: 800px; height: 550px;">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center">
+
+        <div class="card" onclick="selecionarPersonagem('yoda', 'https://art.pixilart.com/b3255356f73ea69.gif')">
+          <img src="https://art.pixilart.com/b3255356f73ea69.gif" width="100px">
+        </div>
+
+        <div class="card" onclick="selecionarPersonagem('memphis', 'https://videos.cults3d.com/qs14Vztvjjx7i5vk-Y7Aj2YRnbI=/516x516/filters:no_upscale()/https://fbi.cults3d.com/uploaders/34961049/illustration-file/04b234c5-266d-4edd-8461-cb5f411fb63f/Untitled_Render-Camera.gif')">
+          <img src="https://videos.cults3d.com/qs14Vztvjjx7i5vk-Y7Aj2YRnbI=/516x516/filters:no_upscale()/https://fbi.cults3d.com/uploaders/34961049/illustration-file/04b234c5-266d-4edd-8461-cb5f411fb63f/Untitled_Render-Camera.gif" width="115px">
+        </div>
+
+        <div class="card" onclick="selecionarPersonagem('yuri', 'https://i.imgur.com/4fnzRXT.gif')">
+          <img src="https://i.imgur.com/4fnzRXT.gif" width="100px">
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="box border border-dark rounded p-3 mt-4 mb-5" style="width: 800px; height: 550px; margin-left: 30%;">
 
     <div class="box3 border border-dark rounded-4 shadow mx-2 my-2 p-3" style="height: 200px;">
       <div class="container-fluid h-100 d-flex flex-column justify-content-center">
@@ -19,8 +40,7 @@
           <div class="col-10">
             <div class="mb-3">
               <label for="pergunta" class="form-label fw-bold">Sua pergunta digite</label>
-              <input type="text" name="pergunta" id="pergunta" class="form-control mb-2"
-                placeholder="Vai Corinthians...">
+              <input type="text" name="pergunta" id="pergunta" class="form-control mb-2" placeholder="Vai Corinthians...">
               <button class="btn btn-primary w-100" onclick="perguntar()">Perguntar</button>
             </div>
           </div>
@@ -28,7 +48,7 @@
       </div>
     </div>
 
-    <div class="box2 border border-dark rounded-4 shadow mx-2 mb-2 p-3" style="height: 300px; overflow-y: auto;">
+    <div class="box2 border border-dark rounded-4 shadow mx-2 mb-2 p-3" style="height: 300px; overflow-y: auto; justify-content: center;">
       <div class="container-fluid" id="chat">
         <!-- <div class="row d-flex justify-content-start">
           <div class="col-8">
@@ -47,11 +67,14 @@
 
   <script>
     let chat = document.getElementById('chat');
+    let personagem;
+    function selecionarPersonagem(nome, foto) {
+      personagem = new Personagem(nome, foto);
+    }
 
     function perguntar() {
         let pergunta = document.getElementById('pergunta').value;
 
- 
         const URL = `https://api.openai.com/v1/chat/completions`;
 
         fetch(URL, {
@@ -63,7 +86,7 @@
             body: JSON.stringify({
                 model: 'gpt-4o-mini',
                 messages: [
-                    { role: 'system', content: 'Me responda como se você fosse o mestre Yoda, de forma curta e clara' },
+                    { role: 'system', content: `Me responda como se você fosse o ${ personagem.nome }, de forma curta e clara` },
                     { role: 'user', content: pergunta },
                 ],
                 max_tokens: 50
@@ -74,18 +97,23 @@
                 console.log(resp);
 
                 let col_perg = document.createElement('div');
-                col_perg.classList.add('col-8', 'd-flex', 'justify-content-end', 'row',);
+                col_perg.classList.add('col-12', 'd-flex', 'justify-content-end', 'row',);
 
                 let col_resp = document.createElement('div');
-                col_resp.classList.add('col-8', 'd-flex', 'justify-content-start', 'row'); 
+                col_resp.classList.add('col-12', 'd-flex', 'justify-content-start', 'row');
 
                 let card_perg = document.createElement('div');
-                card_perg.classList.add('card', 'p-2', 'm-1', 'bg-primary', 'card-shadow', 'p-3', 'm-2', 'bg-secondary', 'text-light', 'text-end', 'fw-bold');
+                card_perg.classList.add('card', 'p-2', 'm-1', 'bg-info', 'card-shadow', 'p-3', 'm-2', 'bg-secondary', 'text-light', 'text-end', 'fw-bold');
                 card_perg.innerText = pergunta;
 
                 let card_resp = document.createElement('div');
-                card_resp.classList.add('card', 'p-2', 'm-1', 'bg-warning');
-                card_resp.innerText = resp.choices[0].message.content;
+                card_resp.classList.add('card', 'p-2', 'm-1', 'bg-danger', 'card-shadow', 'p-3', 'm-2', 'bg-secondary', 'text-start', 'fw-bold');
+                card_resp.innerText = personagem.nome = ` diz: ` + resp.choices[0].message.content;
+
+                let foto = document.createElement('img');
+                foto.setAttribute('src', personagem.foto);
+                foto.setAttribute('width', "70px");
+                card_resp.appendChild(foto);
 
                 col_perg.appendChild(card_perg);
                 col_resp.appendChild(card_resp);
